@@ -1,0 +1,55 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+<h2>
+Welcome, {{ current_user.username }}
+</h2>
+
+<div class="row">
+
+{% for c in candidates %}
+
+<div class="col-md-4">
+
+<div class="card mb-4">
+
+<img
+src="{{ url_for('static',
+filename='images/' + c.image) }}"
+height="250">
+
+<div class="card-body">
+
+<h4>{{ c.name }}</h4>
+
+<p>{{ c.manifesto }}</p>
+
+{% if not current_user.voted %}
+
+<a
+href="/vote/{{ c.id }}"
+class="btn btn-success">
+Vote
+</a>
+
+{% else %}
+
+<button
+class="btn btn-secondary">
+Vote Submitted
+</button>
+
+{% endif %}
+
+</div>
+
+</div>
+
+</div>
+
+{% endfor %}
+
+</div>
+
+{% endblock %}

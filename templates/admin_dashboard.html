@@ -1,0 +1,58 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+<h2>
+Welcome Admin
+</h2>
+
+<div class="row mb-4">
+
+<div class="col-md-4">
+<div class="card p-3">
+Total Students
+<h3>{{ total_students }}</h3>
+</div>
+</div>
+
+<div class="col-md-4">
+<div class="card p-3">
+Votes Cast
+<h3>{{ votes_cast }}</h3>
+</div>
+</div>
+
+<div class="col-md-4">
+<div class="card p-3">
+Participation
+<h3>{{ participation }}%</h3>
+</div>
+</div>
+
+</div>
+
+<table class="table table-bordered">
+
+<tr>
+<th>Rank</th>
+<th>Candidate</th>
+<th>Votes</th>
+</tr>
+
+{% for c in candidates %}
+
+<tr>
+
+<td>{{ loop.index }}</td>
+
+<td>{{ c.name }}</td>
+
+<td>{{ c.votes }}</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+{% endblock %}
