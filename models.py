@@ -3,50 +3,123 @@ from flask_login import UserMixin
 
 db = SQLAlchemy()
 
+
 class User(UserMixin, db.Model):
-    id = db.Column(db.Integer, primary_key=True)
 
-    username = db.Column(db.String(50), unique=True)
+    __tablename__ = "users"
 
-    password = db.Column(db.String(200))
+    id = db.Column(
+        db.Integer,
+        primary_key=True
+    )
 
-    role = db.Column(db.String(20))
+    username = db.Column(
+        db.String(100),
+        unique=True,
+        nullable=False
+    )
 
-    voted = db.Column(db.Boolean, default=False)
+    password = db.Column(
+        db.String(255),
+        nullable=False
+    )
+
+    role = db.Column(
+        db.String(20),
+        nullable=False
+    )
+
+    votes = db.relationship(
+        "Vote",
+        backref="voter",
+        lazy=True
+    )
 
 
 class Position(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
 
-    name = db.Column(db.String(100))
+    __tablename__ = "positions"
+
+    id = db.Column(
+        db.Integer,
+        primary_key=True
+    )
+
+    name = db.Column(
+        db.String(100),
+        nullable=False,
+        unique=True
+    )
+
+    candidates = db.relationship(
+        "Candidate",
+        backref="position",
+        lazy=True
+    )
 
 
 class Candidate(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
 
-    name = db.Column(db.String(100))
+    __tablename__ = "candidates"
 
-    manifesto = db.Column(db.Text)
+    id = db.Column(
+        db.Integer,
+        primary_key=True
+    )
 
-    image = db.Column(db.String(200))
+    name = db.Column(
+        db.String(100),
+        nullable=False
+    )
+
+    manifesto = db.Column(
+        db.Text,
+        nullable=False
+    )
+
+    image = db.Column(
+        db.String(255)
+    )
+
+    votes = db.Column(
+        db.Integer,
+        default=0
+    )
 
     position_id = db.Column(
         db.Integer,
-        db.ForeignKey('position.id')
+        db.ForeignKey(
+            "positions.id"
+        )
     )
-
-    votes = db.Column(db.Integer, default=0)
 
 
 class Vote(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
+
+    __tablename__ = "votes"
+
+    id = db.Column(
+        db.Integer,
+        primary_key=True
+    )
 
     voter_id = db.Column(
         db.Integer,
-        db.ForeignKey('user.id')
+        db.ForeignKey(
+            "users.id"
+        )
     )
 
     candidate_id = db.Column(
         db.Integer,
-        db.ForeignKey('candidate.id')
+        db.ForeignKey(
+            "candidates.id"
+        )
+    )
+
+    position_id = db.Column(
+        db.Integer,
+        db.ForeignKey(
+            "positions.id"
+        )
     )

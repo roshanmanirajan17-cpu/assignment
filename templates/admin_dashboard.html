@@ -1,58 +1,96 @@
 {% extends 'layout.html' %}
-
+{% block page_title %}SRC Election Portal | Admin{% endblock %}
+{% block body_class %}page-admin{% endblock %}
 {% block content %}
-
-<h2>
-Welcome Admin
-</h2>
-
+<div class="hero-card hero-admin mb-4" style="background: linear-gradient(135deg, rgba(37, 99, 235, 0.2), rgba(2, 6, 23, 0.9)); color: #ffffff;">
+    <div class="d-flex align-items-center justify-content-between flex-column flex-md-row gap-3">
+        <div>
+            <img src="{{ url_for('uploaded_file', filename='mila_logo.png') }}" alt="MILA Logo" class="hero-logo mb-3">
+            <h1>Admin Dashboard</h1>
+            <p class="hero-text">Monitor candidates, results, and participation across every position.</p>
+        </div>
+        <div class="text-end">
+            <span class="badge badge-pill badge-light px-4 py-3">Admin Access</span>
+        </div>
+    </div>
+</div>
 <div class="row mb-4">
-
-<div class="col-md-4">
-<div class="card p-3">
-Total Students
-<h3>{{ total_students }}</h3>
+    <div class="col-md-4">
+        <div class="card stat-card shadow-sm" style="background: rgba(2, 6, 23, 0.9); border: 1px solid rgba(96, 165, 250, 0.25);">
+            <div class="card-body text-center">
+                <h2 class="text-white">{{ total_participants }}</h2>
+                <p class="text-white">TOTAL PARTICIPANTS</p>
+                <p class="small text-white-50 mb-0">President 3 • Secretary 3 • Treasurer 2</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card stat-card shadow-sm" style="background: rgba(2, 6, 23, 0.9); border: 1px solid rgba(96, 165, 250, 0.25);">
+            <div class="card-body text-center">
+                <h2 class="text-white">{{ voters }}</h2>
+                <p class="text-white">VOTES CAST</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card stat-card shadow-sm" style="background: rgba(8, 19, 67, 0.9); border: 1px solid rgba(96, 165, 250, 0.25);">
+            <div class="card-body text-center">
+                <h2 class="text-white">{{ participation }}%</h2>
+                <p class="text-white">PARTICIPATION</p>
+            </div>
+        </div>
+    </div>
 </div>
+{% for position in positions %}
+<div class="card position-card mb-4 shadow-sm" style="background: rgba(22, 42, 129, 0.9); border: 1px solid rgba(96, 165, 250, 0.25);">
+    <div class="card-body">
+        <h5 class="fw-bold mb-4 text-white">{{ position.name }} Results</h5>
+        <div class="row g-4">
+            {% for candidate in position.candidates %}
+            <div class="col-md-6 col-lg-4">
+                <div class="card candidate-card admin-card h-100" style="background: rgba(15, 23, 42, 0.92); border: 1px solid rgba(96, 165, 250, 0.25);">
+                    {% if candidate.image %}
+                    <img src="{{ url_for('uploaded_file', filename=candidate.image) }}" class="candidate-image" alt="{{ candidate.name }}">
+                    {% endif %}
+                    <div class="card-body d-flex flex-column">
+                        <h6 class="mb-2 text-white">{{ candidate.name }}</h6>
+                        <p class="small mb-3 text-white">{{ candidate.manifesto }}</p>
+                        <div class="d-flex align-items-center justify-content-between mb-3">
+                            <span class="fw-bold text-white">{{ candidate.votes }} votes</span>
+                            <span class="text-white">
+                                {% if voters > 0 %}
+                                    {{ ((candidate.votes/voters)*100)|round(0) }}%
+                                {% else %}
+                                    0%
+                                {% endif %}
+                            </span>
+                        </div>
+                        {% set percentage = (candidate.votes / voters * 100) if voters > 0 else 0 %}
+                        <div class="progress mb-3">
+                            <div class="progress-bar" style="background: linear-gradient(90deg, #3b82f6, #2563eb);" data-width="{{ percentage | round(0) }}"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
 </div>
-
-<div class="col-md-4">
-<div class="card p-3">
-Votes Cast
-<h3>{{ votes_cast }}</h3>
-</div>
-</div>
-
-<div class="col-md-4">
-<div class="card p-3">
-Participation
-<h3>{{ participation }}%</h3>
-</div>
-</div>
-
-</div>
-
-<table class="table table-bordered">
-
-<tr>
-<th>Rank</th>
-<th>Candidate</th>
-<th>Votes</th>
-</tr>
-
-{% for c in candidates %}
-
-<tr>
-
-<td>{{ loop.index }}</td>
-
-<td>{{ c.name }}</td>
-
-<td>{{ c.votes }}</td>
-
-</tr>
-
 {% endfor %}
+<div class="d-flex gap-2 flex-wrap mb-4">
+    <a href="{{ url_for('add_candidate') }}" class="btn btn-dark">Add Candidate</a>
+    <a href="{{ url_for('results') }}" class="btn btn-secondary">View Results</a>
+    <a href="{{ url_for('export_results') }}" class="btn btn-success">Export CSV</a>
+</div>
 
-</table>
-
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('.progress-bar[data-width]').forEach(function(bar) {
+            var width = bar.getAttribute('data-width');
+            if (width) {
+                bar.style.width = width + '%';
+            }
+        });
+    });
+</script>
 {% endblock %}

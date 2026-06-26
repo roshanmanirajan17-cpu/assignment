@@ -1,55 +1,45 @@
 {% extends 'layout.html' %}
-
+{% block page_title %}SRC Election Portal | Student{% endblock %}
+{% block body_class %}page-student{% endblock %}
 {% block content %}
-
-<h2>
-Welcome, {{ current_user.username }}
-</h2>
-
-<div class="row">
-
-{% for c in candidates %}
-
-<div class="col-md-4">
-
-<div class="card mb-4">
-
-<img
-src="{{ url_for('static',
-filename='images/' + c.image) }}"
-height="250">
-
-<div class="card-body">
-
-<h4>{{ c.name }}</h4>
-
-<p>{{ c.manifesto }}</p>
-
-{% if not current_user.voted %}
-
-<a
-href="/vote/{{ c.id }}"
-class="btn btn-success">
-Vote
-</a>
-
-{% else %}
-
-<button
-class="btn btn-secondary">
-Vote Submitted
-</button>
-
-{% endif %}
-
+<div class="hero-card hero-student mb-4" style="color: #ffffff;">
+    <div class="d-flex align-items-center justify-content-between flex-column flex-md-row gap-3">
+        <div>
+            <img src="{{ url_for('uploaded_file', filename='mila_logo.png') }}" alt="MILA Logo" class="hero-logo mb-3">
+            <h1>Student Voting</h1>
+            <p class="hero-text">Cast your vote for the most deserving student leaders in each position.</p>
+        </div>
+        <div class="text-end">
+            <span class="badge badge-pill badge-light px-4 py-3">Voting Open</span>
+        </div>
+    </div>
 </div>
-
+<div class="mb-4">
+    <div class="alert border-left-custom" style="background: rgba(255,255,255,0.08); color: #ffffff; border-color: rgba(96,165,250,0.25);">
+        <strong>Note:</strong> Choose one candidate for each position in this realistic university election portal.
+    </div>
 </div>
-
+{% for position in positions %}
+<div class="position-card card mb-4 shadow-sm" style="background: rgba(2, 6, 23, 0.92); border: 1px solid rgba(96, 165, 250, 0.25);">
+    <div class="card-body">
+        <h5 class="mb-4 text-white">{{ position.name }}</h5>
+        <div class="row g-4">
+            {% for candidate in position.candidates %}
+            <div class="col-md-6 col-lg-4">
+                <div class="card candidate-card h-100 shadow-sm" style="background: rgba(2, 6, 23, 0.9); border: 1px solid rgba(96, 165, 250, 0.25);">
+                    {% if candidate.image %}
+                    <img src="{{ url_for('uploaded_file', filename=candidate.image) }}" class="candidate-image" alt="{{ candidate.name }}">
+                    {% endif %}
+                    <div class="card-body d-flex flex-column">
+                        <h6 class="mb-2 text-white">{{ candidate.name }}</h6>
+                        <p class="small mb-3 text-white">{{ candidate.manifesto }}</p>
+                        <a href="{{ url_for('vote', position_id=position.id, candidate_id=candidate.id) }}" class="btn btn-success mt-auto" style="background: linear-gradient(135deg, #3b82f6, #2563eb); border: none;">Vote</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
 </div>
-
 {% endfor %}
-
-</div>
-
 {% endblock %}

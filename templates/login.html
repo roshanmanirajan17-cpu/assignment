@@ -1,41 +1,56 @@
 {% extends 'layout.html' %}
-
+{% block page_title %}SRC Election Portal | Login{% endblock %}
+{% block body_class %}page-login{% endblock %}
 {% block content %}
-
-<div class="row justify-content-center">
-
-<div class="col-md-4">
-
-<div class="card p-4">
-
-<h3 class="text-center">
-SRC Election Portal
-</h3>
-
-<form method="POST">
-
-<input
-class="form-control mb-3"
-name="username"
-placeholder="Username">
-
-<input
-class="form-control mb-3"
-type="password"
-name="password"
-placeholder="Password">
-
-<button
-class="btn btn-dark w-100">
-Login
-</button>
-
-</form>
-
+<div class="login-page-wrapper">
+    <div class="row justify-content-center">
+        <div class="col-xl-10">
+            <div class="card login-panel shadow-lg">
+                <div class="row g-0 align-items-stretch">
+                    <div class="col-lg-7 login-panel-left">
+                        <div class="hero-content">
+                            <img src="{{ url_for('uploaded_file', filename='mila_logo.png') }}" alt="MILA Logo" class="hero-logo mb-4">
+                            <h1>Welcome to SRC Elections</h1>
+                            <p class="hero-text">A modern university election portal for students and administration. Vote securely, view live results, and support representative leadership.</p>
+                            <div class="hero-highlights row gy-3 mt-5">
+                                <div class="col-sm-6">
+                                    <div class="highlight-box">
+                                        <strong>Fast Voting</strong>
+                                        <p>Submit your choice in seconds with a responsive student interface.</p>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="highlight-box">
+                                        <strong>Clear Results</strong>
+                                        <p>Review candidate scores and election statistics with ease.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-5 login-panel-right d-flex align-items-center">
+                        <div class="login-form-wrapper w-100">
+                            <div class="text-center mb-4">
+                                <img src="{{ url_for('uploaded_file', filename='mila_logo.png') }}" alt="MILA Logo" class="card-logo mb-3">
+                                <h4 class="mb-0">Login to continue</h4>
+                            </div>
+                            <form method="POST">
+                                <div class="mb-3">
+                                    <label class="form-label">Username</label>
+                                    <input type="text" name="username" class="form-control" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Password</label>
+                                    <input type="password" name="password" class="form-control" required>
+                                </div>
+                                <button type="submit" class="btn btn-primary w-100">Login</button>
+                            </form>
+                            <p class="text-center mt-3 small text-white">Use your university credentials to access the portal.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-
-</div>
-
-</div>
-
 {% endblock %}
