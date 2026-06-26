@@ -7,53 +7,53 @@
 
 
 <h2>Output 1</h2>
-<img src="src-election-system/static/uploads/output1.jpg" width="500" height="220">
+<p>Login page screenshot: <a href="./src-election-system/static/uploads/output1.jpg">Open image</a></p>
 <p>This image shows the login page of the election system.</p>
 
 <h2>Output 2</h2>
-<img src="src-election-system/static/uploads/output2.jpg" width="500" height="220">
+<p>Admin dashboard screenshot: <a href="./src-election-system/static/uploads/output2.jpg">Open image</a></p>
 <p>This image shows the admin dashboard where admin can view all positions and voting status.</p>
 
 <h2>Output 3</h2>
-<img src="src-election-system/static/uploads/output3.jpg" width="500" height="220">
+<p>Results page screenshot: <a href="./src-election-system/static/uploads/output3.jpg">Open image</a></p>
 <p>This image shows the results page where the election outcomes and vote counts are displayed clearly of President's status</p>
 
 <h2>Output 4</h2>
-<img src="src-election-system/static/uploads/output4.jpg" width="500" height="220">
+<p>Secretary voting screenshot: <a href="./src-election-system/static/uploads/output4.jpg">Open image</a></p>
 <p>This image shows the secretary voting status</p>
 
 <h2>Output 5</h2>
-<img src="src-election-system/static/uploads/output5.jpg" width="500" height="220">
+<p>Treasurer voting screenshot: <a href="./src-election-system/static/uploads/output5.jpg">Open image</a></p>
 <p>This image shows the secretary treasurer voting status</p>
 
 <h2>Output 6</h2>
-<img src="src-election-system/static/uploads/output6.jpg" width="500" height="220">
+<p>Add candidate screenshot: <a href="./src-election-system/static/uploads/output6.jpg">Open image</a></p>
 <p>This image shows the additional candidates adding page for the election.</p>
 
 <h2>Output 7</h2>
-<img src="src-election-system/static/uploads/output7.jpg" width="500" height="220">
+<p>Election results screenshot: <a href="./src-election-system/static/uploads/output7.jpg">Open image</a></p>
 <p>This image shows the results page with the vote counts and information for the election.</p>
 
 <h2>Output 8</h2>
-<img src="src-election-system/static/uploads/output8.jpg" width="500" height="220">
+<p>Results graph screenshot: <a href="./src-election-system/static/uploads/output8.jpg">Open image</a></p>
 <p>This image shows the results page with the vote counts and and also the graph for results status</p>
 
 <h2>Output 9</h2>
-<img src="src-election-system/static/uploads/output9.jpg" width="500" height="220">
+<p>Student dashboard screenshot: <a href="./src-election-system/static/uploads/output9.jpg">Open image</a></p>
 <p>This image shows the student dashboard where student can view all positions and vote for the person they want</p>
 
 <h2>Output 10</h2>
-<img src="src-election-system/static/uploads/output10.jpg" width="500" height="220">
+<p>President voting screenshot: <a href="./src-election-system/static/uploads/output10.jpg">Open image</a></p>
 <p>This image shows the voting pole for President role</p>
 
 <h2>Output 11</h2>
-<img src="src-election-system/static/uploads/output11.jpg" width="500" height="220">
+<p>Secretary voting screenshot: <a href="./src-election-system/static/uploads/output11.jpg">Open image</a></p>
 <p>This image shows the voting pole for Secretary role</p>
 
 <h2>Output 12</h2>
-<img src="src-election-system/static/uploads/output12.jpg" width="500" height="220">
+<p>Treasurer voting screenshot: <a href="./src-election-system/static/uploads/output12.jpg">Open image</a></p>
 <p>This image shows the voting pole for Treasurer role</p>
 
 <h2>Output 13</h2>
-<img src="src-election-system/static/uploads/output13.jpg" width="500" height="220">
+<p>Logout screenshot: <a href="./src-election-system/static/uploads/output13.jpg">Open image</a></p>
 <p>This image shows the page showing LOGGED OUT SUCCESFULLY after logout from the website as a admin or student</p>
