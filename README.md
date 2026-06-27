@@ -33,4 +33,5 @@
    
    <h2>Output 12</h2> <img src="static/uploads/output12.jpg" width="500" height="220"> <p>This image shows the voting page for the Treasurer position.</p> 
    
-   <h2>Output 13</h2> <img src="static/uploads/output13.jpg" width="500" height="220"> <p>This image shows the successful logout page displayed after an admin or student logs out of the election system.</p>
+   <h2>Output 13</h2> <img src="static/uploads/output13.jpg" width="500" height="220"> 
+   <p>This image shows the successful logout page displayed after an admin or student logs out of the election system.</p>

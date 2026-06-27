@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 from flask import Flask, render_template, request, redirect
 from flask import url_for, flash, send_file, send_from_directory
 
@@ -577,7 +576,6 @@ if __name__ == "__main__":
         host="0.0.0.0",
         port=port
     )
-=======
 import importlib.util
 import os
 import sys
@@ -599,4 +597,4 @@ if hasattr(module, "app"):
     module.app.run(debug=True, host="0.0.0.0", port=port)
 else:
     raise RuntimeError("Failed to load Flask app from src-election-system/app.py")
->>>>>>> 30d33a7fad676b6f54f22ae14fd4bdd6a2557903
+
